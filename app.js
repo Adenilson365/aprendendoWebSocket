@@ -1,33 +1,25 @@
 const express = require('express');
+const { connect } = require('http2');
 const app = express();
 const path = require('path');
-const socketIO = require('socket.io');
-
-const list = ["andre", "renan","ana"];
-
-setTimeout(() => {
-    list.push("Ricardo");
-}, 6000);
-
+const socketIo = require('socket.io');
 
 app.use('/', express.static(path.join(__dirname,'public')));
 
-app.get('/list', (req, res)=>{
-    res.send(list);
-})
-
 const server = app.listen(3000,()=>{
-    console.log("Rodando");
+    console.log("Running");
 })
 
-const io = socketIO(server);
+
+const messages = [];
+
+const io = socketIo(server);
 
 io.on('connection', (socket)=>{
-    console.log("New Connection")
+    console.log("New Connection");
+    socket.on('new_message', (data)=>{
+        messages.push(data.message);
+        io.emit('update_messages', messages)
+    })
 
-    socket.emit('hello', {msg:"Seja bem vindo!"})
-
-    socket.on("hello_client_response",(data=>{
-        console.log(data.msg)
-    }))
 })

@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div id="main">
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-            const socket = io('http://localhost:3000')
+<div id="container">
 
-            socket.on('hello',(data)=>{
-                console.log(data.msg);
-                socket.emit('hello_client_response', {msg:"Tudo certo!"})
-            })
-        </script>
-
-
-
+    <div id="messages">
     </div>
-    
+    <form name="msg-form" id="form-msg"action="">
+        <input name="msg" id="input-msg"type="text" >
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./chat.js"></script>
    
 </body>
+
 </html>
