@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     display: flex;
     flex-direction: row;
@@ -16,12 +17,21 @@ body{
 width: 500px;
 height: 700px;
 
+
 }
 #messages{
-    background-color: antiquewhite;
+    background-color: #ece5dd;
     width: 100%;
     height: 80%;
+    font-size: 18px;
+    overflow: scroll;
   
+}
+
+.list-class{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #form-messages{
@@ -31,4 +41,32 @@ height: 700px;
 
 }
 
+li{
+    width: 100%;
+    margin-bottom: 3px;
+}
 
+.user-principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.user-secondary{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.user-principal div{
+    border-radius: 3px;
+    background-color: #dcf8c6;
+
+
+}
+
+.user-secondary div{
+    border-radius: 3px;
+    background-color: #fff;
+
+}
