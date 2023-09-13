@@ -1,5 +1,4 @@
 const express = require('express');
-const { connect } = require('http2');
 const app = express();
 const path = require('path');
 const socketIo = require('socket.io');
